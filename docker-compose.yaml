@@ -1,0 +1,14 @@
+version: '3'
+services:
+  engine_search:
+    image: sittiwat555/resume_parser:lastest
+    build:
+      context: .
+      dockerfile: DockerFile.a4st123994
+    ports:
+      - 5000:5000
+    volumes:
+      - ./app:/root/app
+
+
+  
