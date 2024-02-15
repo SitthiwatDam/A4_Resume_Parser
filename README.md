@@ -43,8 +43,8 @@ For the application interface, users are required to upload the resume files whi
 ![Web application interface](./figures/1.png)
 #### Result
 ![Web application interface](./figures/2.png)
-#### Download button
+#### Download Excel file
 ![Web application interface](./figures/3.png)
-#### Excel file
 ![Web application interface](./figures/4.png)
-
+#### Excel file
+![Web application interface](./figures/5.png)
