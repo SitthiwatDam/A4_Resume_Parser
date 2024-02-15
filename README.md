@@ -40,8 +40,8 @@ This web application is built using Flask, a popular web framework in Python. Al
 ### Web Application Interface
 For the application interface, users are required to upload the resume files which is in the PDF format. After that click the submit button. The result will show in form of table which row arrage in order of upload. Their will be 5 features that extracted: Person,Skill, Organization, Geopolitical, Email, and URL.  
 #### Multiple inputs 
-![Web application interface](./1)
+![Web application interface](./figures/1.png)
 #### Result
-![Web application interface](./2)
+![Web application interface](./figures/2.png)
 
 
