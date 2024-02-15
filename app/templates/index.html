@@ -14,8 +14,7 @@
                 AI Resume Parser by <a href="https://github.com/SitthiwatDam">Sitthiwat Damrongpreechar</a>
             </div>
             <div class="card-body" id="myDIV">
-                <h5 class="card-title">Resume Parsing using Spacy</h5>
-                <h6 >Upload Your PDF Resume (support multiple files)</h6>
+                <h5 class="card-title">Upload Your Resume (PDF only):</h5>
                 <form method="post" action="/" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="file" class="form-control-file" name="file[]" multiple>
@@ -25,7 +24,7 @@
             </div>
             <div class="card-footer text-muted">
                 {% if extracted_texts %}
-                    <h5 class="card-title">Resume Parsing Results (arranged in order of upload):</h5>
+                    <h5 class="card-title">Extracted Texts:</h5>
                     {% for extracted_text in extracted_texts %}
                         <div class="row">
                             {% for key, value in extracted_text.items() %}
@@ -35,8 +34,10 @@
                                 </div>
                             {% endfor %}
                         </div>
-                        <hr>
                     {% endfor %}
+                    <form action="/download" method="get">
+                        <button type="submit" class="btn btn-success">Download Excel</button>
+                    </form>
                 {% endif %}
             </div>
         </div>

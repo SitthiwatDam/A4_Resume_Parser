@@ -1,13 +1,13 @@
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, send_file
 from PyPDF2 import PdfReader
 import io
 from spacy.matcher import Matcher
 import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
-
+import pandas as pd
 app = Flask(__name__)
-
+app.secret_key = 'kdjsa;hdflisjdgpks[perjtp9wrpdk-[294u294u583y4tpoqk2pel=bkhxdogjpsw]]'
 nlp = spacy.load('en_core_web_lg')
 skill_path = './datasets/skills.jsonl'
 ruler = nlp.add_pipe("entity_ruler")
@@ -78,9 +78,20 @@ def index():
                 result = get_entities(extracted_text)
                 extracted_texts.append(result)
         print(extracted_texts)
+        # Save the extracted texts in session
+        session['extracted_texts'] = extracted_texts
         return render_template('index.html', extracted_texts=extracted_texts)
-
     return render_template('index.html')
+
+@app.route('/download')
+def download_excel():
+    extracted_texts = session.get('extracted_texts')
+    # Convert extracted texts to a DataFrame
+    df = pd.DataFrame(extracted_texts)
+    excel_file = io.BytesIO()
+    df.to_excel(excel_file, index=False)
+    excel_file.seek(0)
+    return send_file(excel_file, download_name='extracted_resume.xlsx', as_attachment=True)
 
 
 if __name__ == '__main__':
